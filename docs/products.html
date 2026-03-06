@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body onload="loadProducts()">
+
+<div class="sidebar">
+<h2>Liberty Store</h2>
+<a href="index.html">Dashboard</a>
+<a href="products.html">Products</a>
+<a href="rack.html">Rack View</a>
+<a href="hisab.html">Hisab</a>
+</div>
+
+<nav class="bottom-nav">
+  <a href="index.html">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Dashboard
+  </a>
+  <a href="products.html" class="active">
+    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    Products
+  </a>
+  <a href="rack.html">
+    <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+    Rack
+  </a>
+  <a href="hisab.html">
+    <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+    Hisab
+  </a>
+</nav>
+
+<div class="main">
+<h1>Products</h1>
+
+<input type="text" id="search" placeholder="Search..." onkeyup="loadProducts()">
+<input type="text" id="rackFilter" list="rackFilterOptions" placeholder="All Racks" oninput="loadProducts()">
+<datalist id="rackFilterOptions">
+<option value="All Racks"></option>
+<option value="Rack 1"></option>
+<option value="Rack 2"></option>
+<option value="Rack 3"></option>
+</datalist>
+
+<h2>Add Product</h2>
+<form id="addProductForm" onsubmit="addProduct(event)">
+<input type="text" id="name" placeholder="Product Name" required>
+<input type="number" id="quantity" placeholder="Quantity" required>
+<input type="number" id="price" placeholder="Price" required>
+<input type="number" id="cost" placeholder="Cost" required>
+<input type="text" id="rack" placeholder="Rack 1" required>
+<input type="text" id="shelf" placeholder="Shelf A" required>
+<input type="file" id="image" accept="image/*" multiple required hidden>
+<label for="image" class="add-image-square product-image-upload" aria-label="Choose product images" ondblclick="submitProductFromIcon(event)"></label>
+<button id="addProductSubmitBtn" type="submit" style="color: transparent; background-color: transparent;">Add</button>
+</form>
+
+<div class="card-box" id="productContainer"></div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
